@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <style>
+      #vite-error-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        font-family: monospace;
+        font-size: 14px;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: auto;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="vite-error-overlay"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('error', function(event) {
+        const errorOverlay = document.getElementById('vite-error-overlay');
+        errorOverlay.innerHTML = `
+          <h1 style="color: #ff5555;">Compile Error</h1>
+          <pre>${event.error.stack || event.error.message}</pre>
+        `;
+        errorOverlay.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
